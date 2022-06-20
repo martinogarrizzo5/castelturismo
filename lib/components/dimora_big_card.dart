@@ -61,7 +61,7 @@ class ZonaCard extends StatelessWidget {
                     ),
                   ),
                   child: Text(
-                    Testo.getText(discoverButtonText, context),
+                    TextUtils.getText(discoverButtonText, context),
                     style: TextStyle(fontSize: 18),
                   ),
                 ),

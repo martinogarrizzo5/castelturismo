@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-class Testo {
+class TextUtils {
   static String getText(String description, BuildContext context) {
     // localize user language
     Locale userLocale = Localizations.localeOf(context);

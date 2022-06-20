@@ -1,8 +1,7 @@
 import 'package:castelturismo/components/base_app_bar.dart';
-import 'package:castelturismo/components/downloadErrorWidget.dart';
+import 'package:castelturismo/components/download_error_widget.dart';
 import 'package:castelturismo/utils/download.dart';
 import 'package:castelturismo/models/percorso.dart';
-import 'package:castelturismo/utils/styles.dart';
 import 'package:castelturismo/utils/text.dart';
 import "package:flutter/material.dart";
 
@@ -43,8 +42,8 @@ class _CreditsPageState extends State<ItinerariPage> {
                             borderRadius: BorderRadius.circular(100),
                           ),
                         ),
-                        child:
-                            Text(Testo.getText(percorso.descrizione, context)),
+                        child: Text(
+                            TextUtils.getText(percorso.descrizione, context)),
                       ),
                     )
                     .toList(),

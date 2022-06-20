@@ -1,6 +1,7 @@
 import 'package:castelturismo/components/base_app_bar.dart';
 import 'package:castelturismo/components/filter.dart';
 import 'package:castelturismo/providers/filters.dart';
+import 'package:castelturismo/utils/text.dart';
 import "package:flutter/material.dart";
 import 'package:provider/provider.dart';
 
@@ -40,7 +41,10 @@ class _FiltersPageState extends State<FiltersPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: baseAppBar(context, title: "FILTRI"),
+      appBar: baseAppBar(
+        context,
+        title: TextUtils.getText("<it>FILTRI</it><en>FILTERS</en>", context),
+      ),
       body: _buildBody(),
     );
   }

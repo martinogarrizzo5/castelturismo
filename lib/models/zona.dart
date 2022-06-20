@@ -46,4 +46,15 @@ class Zona {
 
     return bar;
   }
+
+  List<Dimora> get hotels {
+    List<Dimora> hotels = [];
+    for (var dimora in dimore) {
+      if (dimora.tipologia == "Albergo") {
+        hotels.add(dimora);
+      }
+    }
+
+    return hotels;
+  }
 }
