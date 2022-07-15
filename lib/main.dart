@@ -58,22 +58,25 @@ class MyApp extends StatelessWidget {
           "/credits": (context) => const CreditsPage(),
           "/dimore": (context) => const DimorePage(),
           "/intro-dimora": (context) => const IntroDimoraPage(),
-          "/dimora-details": (context) => const DimoraDetailsPage(),
           "/servizi": (context) => const ServiziPage(),
           "/favorites": (context) => const FavoritesPage(),
         },
-        // onGenerateRoute: (settings) {
-        //   if (settings.name == "/dimora-details") {
-        //     return PageRouteBuilder(
-        //         settings:
-        //             settings, // Pass this to make popUntil(), pushNamedAndRemoveUntil(), works
-        //         pageBuilder: (_, __, ___) => DimoraDetailsPage(),
-        //         transitionsBuilder: (_, a, __, c) =>
-        //             FadeTransition(opacity: a, child: c));
-        //   }
-        //   // Unknown route
-        //   return MaterialPageRoute(builder: (_) => HomePage());
-        // },
+        onGenerateRoute: (settings) {
+          if (settings.name == "/dimora-details") {
+            return PageRouteBuilder(
+                settings:
+                    settings, // Pass this to make popUntil(), pushNamedAndRemoveUntil(), works
+                pageBuilder: (_, __, ___) => const DimoraDetailsPage(),
+                transitionsBuilder: (_, a, __, c) => SlideTransition(
+                    position: Tween(
+                      begin: Offset(0.0, 1.0),
+                      end: Offset(0.0, 0.0),
+                    ).animate(a),
+                    child: c));
+          }
+          // Unknown route
+          return MaterialPageRoute(builder: (_) => HomePage());
+        },
       ),
     );
   }
