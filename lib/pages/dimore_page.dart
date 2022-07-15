@@ -4,7 +4,7 @@ import 'package:castelturismo/utils/styles.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../components/zona_card.dart';
+import "../components/dimora_big_card.dart";
 import '../models/dimora.dart';
 import '../models/zona.dart';
 
@@ -122,7 +122,7 @@ class _DimorePageState extends State<DimorePage> {
         } else if (index == 1) {
           Navigator.of(context).pushNamed(
             "/servizi",
-            arguments: {"title": "Hotel"},
+            arguments: {"title": "Hotel", "dimore": _zona?.hotels},
           );
         }
       },
@@ -180,7 +180,7 @@ class _DimorePageState extends State<DimorePage> {
       backgroundColor: Colors.black,
       appBar: _buildAppBar(),
       body: _pageBody(),
-      bottomNavigationBar: _buildNavBar(),
+      bottomNavigationBar: _isLoading ? null : _buildNavBar(),
     );
   }
 }

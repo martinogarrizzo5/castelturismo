@@ -1,5 +1,5 @@
 import 'package:castelturismo/components/base_app_bar.dart';
-import 'package:castelturismo/components/downloadErrorWidget.dart';
+import 'package:castelturismo/components/download_error_widget.dart';
 import 'package:castelturismo/models/credits.dart';
 import 'package:castelturismo/utils/download.dart';
 import "package:flutter/material.dart";

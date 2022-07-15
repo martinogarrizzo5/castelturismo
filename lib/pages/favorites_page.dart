@@ -1,4 +1,5 @@
 import 'package:castelturismo/components/base_app_bar.dart';
+import 'package:castelturismo/components/dimora_mini_card.dart';
 import 'package:castelturismo/models/dimora.dart';
 import 'package:castelturismo/providers/favorites.dart';
 import 'package:castelturismo/utils/text.dart';
@@ -26,63 +27,75 @@ class _CreditsPageState extends State<FavoritesPage> {
     super.initState();
   }
 
+  // TODO: divide pages in categories: es. Palazzi, Hotels
   Widget _buildBody() {
+    List<Dimora> palazzi = [];
+    List<Dimora> hotels = [];
+
+    // TODO: add all types of dimore
+    for (var dimora in _favoriteDimore) {
+      if (dimora.tipologia == "Albergo") {
+        hotels.add(dimora);
+      } else {
+        palazzi.add(dimora);
+      }
+    }
+
     return ListView(
-      children: _favoriteDimore
-          .map(
-            (dimora) => GestureDetector(
-              onTap: () => Navigator.of(context)
-                  .pushNamed("/intro-dimora", arguments: {"dimora": dimora}),
-              child: Container(
-                height: 80,
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                margin: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: NetworkImage(
-                      dimora.coverPath,
-                    ),
-                    colorFilter: ColorFilter.mode(
-                      Colors.black.withOpacity(0.4),
-                      BlendMode.srcOver,
-                    ),
-                    fit: BoxFit.cover,
-                  ),
-                  borderRadius: BorderRadius.circular(100),
-                ),
-                child: Row(
-                  children: [
-                    Material(
-                      color: Colors.transparent,
-                      child: IconButton(
-                        tooltip: "Favorite",
-                        splashRadius: 24,
-                        iconSize: 48,
-                        icon: Provider.of<Favorites>(context)
-                                .containsPlace(dimora.id)
-                            ? Image.asset(
-                                "assets/iconapreferitifilled.png",
-                                height: 48,
-                              )
-                            : Image.asset(
-                                "assets/iconapreferiti.png",
-                                height: 48,
-                              ),
-                        onPressed: () =>
-                            Provider.of<Favorites>(context, listen: false)
-                                .togglePlace(dimora),
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    Flexible(
-                      child: Text(dimora.nome),
-                    ),
-                  ],
+      padding: const EdgeInsets.all(16.0),
+      children: [
+        if (palazzi.isNotEmpty)
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: const [
+              Text(
+                "Palazzi",
+                style: TextStyle(
+                  fontSize: 19,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 3,
                 ),
               ),
-            ),
-          )
-          .toList(),
+              Divider(
+                color: Colors.white,
+                thickness: 2,
+              )
+            ],
+          ),
+        ...palazzi.map(
+          (dimora) => DimoraMiniCard(
+            dimora,
+            onTap: () => Navigator.of(context)
+                .pushNamed("/intro-dimora", arguments: {"dimora": dimora}),
+          ),
+        ),
+        const SizedBox(height: 32),
+        if (hotels.isNotEmpty)
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: const [
+              Text(
+                "Hotels",
+                style: TextStyle(
+                  fontSize: 19,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 3,
+                ),
+              ),
+              Divider(
+                color: Colors.white,
+                thickness: 2,
+              )
+            ],
+          ),
+        ...hotels.map(
+          (dimora) => DimoraMiniCard(
+            dimora,
+            onTap: () => Navigator.of(context)
+                .pushNamed("/intro-dimora", arguments: {"dimora": dimora}),
+          ),
+        ),
+      ],
     );
   }
 
@@ -93,7 +106,7 @@ class _CreditsPageState extends State<FavoritesPage> {
         children: [
           Image.asset("assets/iconapreferitifilled.png"),
           Text(
-            Testo.getText(
+            TextUtils.getText(
               "<it>Nessun preferito aggiunto</it><en>No favorite place added</en>",
               context,
             ),
@@ -108,7 +121,11 @@ class _CreditsPageState extends State<FavoritesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: baseAppBar(context, title: "PREFERITI"),
+      appBar: baseAppBar(
+        context,
+        title:
+            TextUtils.getText("<it>PREFERITI</it><en>FAVORITES</en>", context),
+      ),
       body: _favoriteDimore.isNotEmpty ? _buildBody() : _buildNoFavorites(),
     );
   }

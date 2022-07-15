@@ -2,7 +2,6 @@ import 'package:castelturismo/models/filtro.dart';
 import 'package:castelturismo/utils/download.dart';
 import "package:flutter/material.dart";
 import 'package:shared_preferences/shared_preferences.dart';
-import "package:http/http.dart" as http;
 
 class Filters with ChangeNotifier {
   List<Filtro>? _filters;
@@ -48,5 +47,21 @@ class Filters with ChangeNotifier {
     }
 
     return ids;
+  }
+
+  void saveFilters() {
+    if (filters == null) return;
+
+    List<String> ids = [];
+    for (var filter in _filters!) {
+      if (filter.isChecked) {
+        ids.add(filter.id.toString());
+      }
+    }
+
+    // async task
+    SharedPreferences.getInstance().then(
+      (sharedPrefs) => sharedPrefs.setStringList("filters", ids),
+    );
   }
 }

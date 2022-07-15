@@ -76,8 +76,18 @@ class Dimora {
     return photos;
   }
 
+  String get mainGeneralPhoto {
+    String photo = placeholderImage;
+
+    if (generalPhotosPaths.isNotEmpty) {
+      photo = generalPhotosPaths[0];
+    }
+
+    return photo;
+  }
+
   String introDescription(BuildContext context) {
-    String description = Testo.getText(descrizione!, context);
+    String description = TextUtils.getText(descrizione!, context);
 
     int firstSentenceEndPos = description.indexOf(".", 15);
     // prevent error if end of sentence not found
@@ -87,7 +97,7 @@ class Dimora {
   }
 
   String description(BuildContext context) {
-    String description = Testo.getText(descrizione!, context);
+    String description = TextUtils.getText(descrizione!, context);
 
     return description;
   }
