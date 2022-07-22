@@ -26,15 +26,7 @@ class _CreditsPageState extends State<CreditsPage> {
             if (dataSnapshot.hasError) {
               return DownloadErrorWidget();
             }
-
             var credits = dataSnapshot.data as List<Credits>;
-            credits.insert(
-              0,
-              Credits(
-                id: 2,
-                descrizione: "Ovviamente tutto merito di Martin Meneghetti.",
-              ),
-            );
 
             return ListView(
               padding: const EdgeInsets.all(16),

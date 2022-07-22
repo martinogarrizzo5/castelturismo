@@ -1,6 +1,7 @@
 import 'package:castelturismo/models/credits.dart';
 import 'package:castelturismo/models/dimora.dart';
 import 'package:castelturismo/models/filtro.dart';
+import 'package:castelturismo/models/itinerario.dart';
 import 'package:castelturismo/models/percorso.dart';
 import 'package:castelturismo/providers/filters.dart';
 import 'package:flutter/cupertino.dart';
@@ -10,35 +11,39 @@ import 'dart:convert';
 import '../models/zona.dart';
 
 class Download {
-  static Future<Zona?> getDimore({int? id}) async {
-    Zona? data;
-    if (id != null) {
-      var url = Uri.parse(
-          "http://prolococasteo.altervista.org/index.php/zona?zona=$id");
+  // TODO: USE THIS FUNCTION TO RETRY CONNECTION TO SERVER IN CASE OF FAIL
+  static Future<dynamic> retryFuture(
+      Future<dynamic> Function() future, int delay) async {
+    return Future.delayed(Duration(milliseconds: delay), () async {
+      return await future();
+    });
+  }
 
-      try {
-        var response = await http.get(url);
-        final extractedData = jsonDecode(response.body);
-        final Zona zona = Zona.fromJson(extractedData);
-        data = zona;
-      } catch (err) {
-        print(err);
-        rethrow;
-      }
+  static Future<Zona> getDimore({required int idZona}) async {
+    Zona data;
+
+    var url = Uri.parse(
+        "http://prolococasteo.altervista.org/index.php/zona?zona=$idZona");
+
+    try {
+      var response = await http.get(url);
+      final extractedData = jsonDecode(response.body);
+      final Zona zona = Zona.fromJson(extractedData);
+      data = zona;
+    } catch (err) {
+      rethrow;
     }
 
     return data;
   }
 
   //TODO: SHOULD RETURN ZONA??
-  static Future<List<Dimora>> getFilteredDimore(BuildContext context) async {
-    String formattedIds =
-        Provider.of<Filters>(context, listen: false).formattedFiltersId;
+  static Future<List<Dimora>> getFilteredDimore(
+      {required int idZona, required String filters}) async {
     List<Dimora> dimore = [];
 
-    // TODO: HOW THIS IS RELATED TO ZONA??
     var url = Uri.parse(
-        "http://prolococasteo.altervista.org/index.php/filtro?filtro=$formattedIds");
+        "http://prolococasteo.altervista.org/index.php/filtro?filtro=$filters&zona=$idZona");
 
     try {
       var response = await http.get(url);
@@ -55,16 +60,16 @@ class Download {
     return dimore;
   }
 
-  static Future<List<Percorso>> getPercorsi() async {
-    List<Percorso> percorsi = [];
+  static Future<List<Itinerario>> getPercorsi() async {
+    List<Itinerario> percorsi = [];
 
     final url =
         Uri.parse("http://prolococasteo.altervista.org/index.php/percorsi");
     try {
       var response = await http.get(url);
       final extractedData = jsonDecode(response.body) as List<dynamic>;
-      List<Percorso> extractedPercorsi =
-          extractedData.map((e) => Percorso.fromJson(e)).toList();
+      List<Itinerario> extractedPercorsi =
+          extractedData.map((e) => Itinerario.fromJson(e)).toList();
       percorsi = extractedPercorsi;
     } catch (err) {
       print(err);
@@ -107,5 +112,40 @@ class Download {
       rethrow;
     }
     return credits;
+  }
+
+  static Future<List<Dimora>> getFavoriteDimore(String formattedIds) async {
+    List<Dimora> dimore = [];
+    try {
+      final url = Uri.parse(
+          "https://prolococasteo.altervista.org/index.php/dimore?dimore=$formattedIds");
+      var response = await http.get(url);
+      final extractedData = jsonDecode(response.body) as List<dynamic>;
+
+      for (var el in extractedData) {
+        dimore.add(Dimora.fromJson(el));
+      }
+    } catch (err) {
+      print(err);
+      rethrow;
+    }
+
+    return dimore;
+  }
+
+  static Future<Percorso>? getPercorso(int id) async {
+    Percorso? percorso;
+    try {
+      final url = Uri.parse(
+          "https://prolococasteo.altervista.org/index.php/percorso?id=$id");
+      var response = await http.get(url);
+      final extractedData = jsonDecode(response.body);
+      percorso = Percorso.fromJson(extractedData);
+    } catch (err) {
+      print(err);
+      rethrow;
+    }
+
+    return percorso;
   }
 }

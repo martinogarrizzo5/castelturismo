@@ -1,38 +1,23 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:castelturismo/components/base_app_bar.dart';
 import 'package:castelturismo/models/dimora.dart';
 import 'package:castelturismo/utils/styles.dart';
 import 'package:castelturismo/utils/text.dart';
 import "package:flutter/material.dart";
 
-class DimoraDetailsPage extends StatefulWidget {
+class DimoraDetailsPage extends StatelessWidget {
   const DimoraDetailsPage({Key? key}) : super(key: key);
 
-  @override
-  State<DimoraDetailsPage> createState() => _DimoraDetailsPageState();
-}
-
-class _DimoraDetailsPageState extends State<DimoraDetailsPage> {
   @override
   Widget build(BuildContext context) {
     final routeArgs =
         ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
     Dimora dimora = routeArgs["dimora"];
+    DimoraType? dimoraType = routeArgs["type"];
 
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: Colors.transparent,
-        leading: IconButton(
-          tooltip: "Back",
-          splashRadius: 24,
-          icon: Image.asset(
-            "assets/iconafrecciaback.png",
-            width: 36,
-          ),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-      ),
+      appBar: baseAppBar(context, title: ""),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -47,9 +32,9 @@ class _DimoraDetailsPageState extends State<DimoraDetailsPage> {
                     margin: const EdgeInsets.all(8.0),
                     child: Image(
                       image: imageProvider,
-                      height: 200,
+                      height: 220,
                       width: double.infinity,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.contain,
                     ),
                   ),
                   placeholder: (ctx, url) => Container(
@@ -58,7 +43,7 @@ class _DimoraDetailsPageState extends State<DimoraDetailsPage> {
                   ),
                 ),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 8),
               Text(
                 dimora.nome,
                 style: titleStyle,

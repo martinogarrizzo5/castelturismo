@@ -62,7 +62,7 @@ class ZonaCard extends StatelessWidget {
                   ),
                   child: Text(
                     TextUtils.getText(discoverButtonText, context),
-                    style: TextStyle(fontSize: 18),
+                    style: const TextStyle(fontSize: 18),
                   ),
                 ),
               ),

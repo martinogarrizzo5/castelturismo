@@ -1,3 +1,4 @@
+import 'package:castelturismo/providers/favorites.dart';
 import 'package:castelturismo/providers/filters.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -12,9 +13,10 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   void initState() {
-    // TODO: FETCH FAVORITES AND FILTERS
+    // FETCH FAVORITES AND FILTERS
     Future.delayed(Duration.zero).then((_) {
       Provider.of<Filters>(context, listen: false).loadFilters();
+      Provider.of<Favorites>(context, listen: false).loadFavorites();
     });
     super.initState();
   }

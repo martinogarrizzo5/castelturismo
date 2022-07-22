@@ -1,19 +1,24 @@
+import 'package:castelturismo/models/dimora.dart';
+
 class Percorso {
-  final int id;
-  final String descrizione;
-  final int ore;
+  int id;
+  int? durata;
+  List<Dimora> dimore;
 
   Percorso({
     required this.id,
-    required this.descrizione,
-    required this.ore,
+    required this.durata,
+    required this.dimore,
   });
 
   factory Percorso.fromJson(Map<String, dynamic> json) {
+    final rawDimore = json["dimore"] as List;
+    List<Dimora> dimore = rawDimore.map((i) => Dimora.fromJson(i)).toList();
+
     return Percorso(
-      id: json["id"],
-      descrizione: json["descrizione"],
-      ore: json["ore"],
+      id: json["id_percorso"],
+      durata: json["durata"],
+      dimore: dimore,
     );
   }
 }

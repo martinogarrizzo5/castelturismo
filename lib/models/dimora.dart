@@ -2,6 +2,12 @@ import 'package:castelturismo/utils/text.dart';
 import 'package:flutter/cupertino.dart';
 import './foto.dart';
 
+enum DimoraType {
+  palace,
+  hotel,
+  bar,
+}
+
 class Dimora {
   final int id;
   final String? zona;

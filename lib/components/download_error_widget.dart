@@ -1,14 +1,41 @@
+import 'package:castelturismo/components/button.dart';
+import 'package:castelturismo/utils/text.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class DownloadErrorWidget extends StatelessWidget {
   const DownloadErrorWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text("An error occurred. Go back and try again"),
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              "assets/error.png",
+              height: 100,
+            ),
+            Text(
+              TextUtils.getText(
+                "<it>Si è verificato un errore. Torna indietro e prova di nuovo più tardi.</it><en>An error occurred. Go back and try again later.</en>",
+                context,
+              ),
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 16),
+            ),
+            SizedBox(height: 12),
+            Button(
+              text: TextUtils.getText(
+                "<it>Torna alla home</it><en>Go back to home</en>",
+                context,
+              ),
+              onPress: () => Navigator.of(context).pushReplacementNamed("/"),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

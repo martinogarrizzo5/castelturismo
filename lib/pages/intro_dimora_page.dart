@@ -33,6 +33,13 @@ class _IntroDimoraPageState extends State<IntroDimoraPage> {
     Provider.of<Favorites>(context, listen: false).togglePlace(dimora);
   }
 
+  void goToDetails(Dimora dimora) {
+    Navigator.of(context).pushNamed(
+      "/dimora-details",
+      arguments: {"dimora": dimora},
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final routeArgs =
@@ -66,10 +73,7 @@ class _IntroDimoraPageState extends State<IntroDimoraPage> {
 
           // allow page change only on scroll down event
           if (velocity < 0 && dx < 100) {
-            Navigator.of(context).pushNamed(
-              "/dimora-details",
-              arguments: {"dimora": dimora},
-            );
+            goToDetails(dimora);
           }
         },
         child: Stack(
@@ -148,13 +152,7 @@ class _IntroDimoraPageState extends State<IntroDimoraPage> {
                                 splashRadius: 24,
                                 iconSize: 36,
                                 icon: Image.asset("assets/iconafrecciagiu.png"),
-                                onPressed: () =>
-                                    Navigator.of(context).pushNamed(
-                                  "/dimora-details",
-                                  arguments: {
-                                    "dimora": dimora,
-                                  },
-                                ),
+                                onPressed: () => goToDetails(dimora),
                               ),
                             ),
                           ),

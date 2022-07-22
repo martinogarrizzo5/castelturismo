@@ -28,6 +28,7 @@ class Filters with ChangeNotifier {
       }
     }
 
+    print("Loaded filters");
     notifyListeners();
   }
 
@@ -38,7 +39,7 @@ class Filters with ChangeNotifier {
       for (var filter in _filters!) {
         if (filter.isChecked) {
           if (ids.isEmpty) {
-            ids = "$ids${filter.id}";
+            ids = "${filter.id}";
           } else {
             ids = "$ids+${filter.id}";
           }
@@ -60,6 +61,7 @@ class Filters with ChangeNotifier {
     }
 
     // async task
+    // not required to await because it's fast enough and a local version of filters is running on memory
     SharedPreferences.getInstance().then(
       (sharedPrefs) => sharedPrefs.setStringList("filters", ids),
     );

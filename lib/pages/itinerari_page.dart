@@ -1,7 +1,7 @@
 import 'package:castelturismo/components/base_app_bar.dart';
 import 'package:castelturismo/components/download_error_widget.dart';
 import 'package:castelturismo/utils/download.dart';
-import 'package:castelturismo/models/percorso.dart';
+import 'package:castelturismo/models/itinerario.dart';
 import 'package:castelturismo/utils/text.dart';
 import "package:flutter/material.dart";
 
@@ -27,13 +27,16 @@ class _CreditsPageState extends State<ItinerariPage> {
             if (dataSnapshot.hasError) {
               return const DownloadErrorWidget();
             } else {
-              List<Percorso> percorsi = dataSnapshot.data as List<Percorso>;
+              List<Itinerario> percorsi = dataSnapshot.data as List<Itinerario>;
               return ListView(
                 padding: const EdgeInsets.all(24.0),
                 children: percorsi
                     .map(
                       (percorso) => ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () => Navigator.of(context).pushNamed(
+                          "/itinerario",
+                          arguments: percorso,
+                        ),
                         style: ElevatedButton.styleFrom(
                           primary: const Color(0xFF353538),
                           onPrimary: Colors.white,

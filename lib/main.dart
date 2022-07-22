@@ -1,3 +1,5 @@
+import 'package:castelturismo/pages/itinerario_details_page.dart';
+import 'package:castelturismo/pages/servizio_details_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -31,7 +33,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider.value(value: Favorites()),
+        ChangeNotifierProvider(create: (ctx) => Favorites()),
         ChangeNotifierProvider(create: (ctx) => Filters()),
       ],
       child: MaterialApp(
@@ -55,35 +57,37 @@ class MyApp extends StatelessWidget {
         routes: {
           "/filters": (context) => const FiltersPage(),
           "/itinerari": (context) => const ItinerariPage(),
+          "/itinerario": (context) => const ItinerarioDetailsPage(),
           "/credits": (context) => const CreditsPage(),
           "/dimore": (context) => const DimorePage(),
           "/intro-dimora": (context) => const IntroDimoraPage(),
-          // "/dimora-details": (context) => const DimoraDetailsPage(),
+          "/dimora-details": (context) => const DimoraDetailsPage(),
           "/servizi": (context) => const ServiziPage(),
+          "/servizio": (context) => const ServizioPage(),
           "/favorites": (context) => const FavoritesPage(),
         },
-        onGenerateRoute: (settings) {
-          if (settings.name == "/dimora-details") {
-            return PageRouteBuilder(
-              settings: settings,
-              pageBuilder: (_, __, ___) => const DimoraDetailsPage(),
-              transitionsBuilder: (_, a, __, c) => SlideTransition(
-                position: Tween(
-                  begin: const Offset(0.0, 1.0),
-                  end: Offset.zero,
-                ).animate(
-                  CurvedAnimation(
-                    parent: a,
-                    curve: const Interval(0, 0.70, curve: Curves.linear),
-                  ),
-                ),
-                child: c,
-              ),
-            );
-          }
-          // Unknown route
-          return MaterialPageRoute(builder: (_) => const HomePage());
-        },
+        // onGenerateRoute: (settings) {
+        //   if (settings.name == "/dimora-details") {
+        //     return PageRouteBuilder(
+        //       settings: settings,
+        //       pageBuilder: (_, __, ___) => const DimoraDetailsPage(),
+        //       transitionsBuilder: (_, a, __, c) => SlideTransition(
+        //         position: Tween(
+        //           begin: const Offset(0.0, 1.0),
+        //           end: Offset.zero,
+        //         ).animate(
+        //           CurvedAnimation(
+        //             parent: a,
+        //             curve: const Interval(0, 0.70, curve: Curves.linear),
+        //           ),
+        //         ),
+        //         child: c,
+        //       ),
+        //     );
+        //   }
+        //   // Unknown route
+        //   return MaterialPageRoute(builder: (_) => const HomePage());
+        // },
       ),
     );
   }

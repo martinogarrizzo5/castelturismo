@@ -1,6 +1,8 @@
-import 'package:castelturismo/providers/filters.dart';
-import 'package:castelturismo/utils/download.dart';
-import 'package:castelturismo/utils/styles.dart';
+import '../components/no_dimora.dart';
+import '../providers/filters.dart';
+import '../utils/download.dart';
+import '../utils/styles.dart';
+import '../utils/text.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -18,47 +20,71 @@ class DimorePage extends StatefulWidget {
 class _DimorePageState extends State<DimorePage> {
   PageController _pageController = PageController();
   Zona? _zona;
+  late int idZona;
   List<Dimora> _dimore = [];
   bool _isLoading = false;
   double currentPage = 0;
 
+  void controlPages() {
+    setState(() {
+      currentPage = _pageController.page!;
+    });
+  }
+
   @override
   void initState() {
-    _pageController.addListener(() {
-      setState(() {
-        currentPage = _pageController.page!;
-      });
-    });
+    _pageController.addListener(controlPages);
 
     // fetch dimore based on id
-    Future.delayed(Duration.zero).then((_) {
-      setState(() => _isLoading = true);
-      final routeArgs =
-          ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+    Future.delayed(Duration.zero).then(
+      (_) async {
+        setState(() => _isLoading = true);
+        final routeArgs =
+            ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
 
-      bool filtersExist = Provider.of<Filters>(context, listen: false)
-          .formattedFiltersId
-          .isNotEmpty;
+        final filters =
+            Provider.of<Filters>(context, listen: false).formattedFiltersId;
 
-      if (filtersExist) {
-        Download.getFilteredDimore(context).then(
-          (dimore) => setState(() {
-            _dimore = dimore;
-            _isLoading = false;
-          }),
-        );
-      } else {
-        Download.getDimore(id: routeArgs["id"]).then(
-          (zona) => setState(() {
+        idZona = routeArgs["id"];
+
+        if (filters.isEmpty) {
+          final zona = await Download.getDimore(idZona: idZona);
+
+          setState(() {
             _zona = zona;
-            _dimore = zona!.dimore;
+            _dimore = zona.monumenti;
             _isLoading = false;
-          }),
-        );
-      }
-    });
+          });
+        } else {
+          final dimore = await Download.getFilteredDimore(
+              idZona: idZona, filters: filters);
+          final palaces = dimore
+              .where((dimora) =>
+                  dimora.tipologia != "Albergo" && dimora.tipologia != "Bar")
+              .toList();
+
+          setState(() {
+            _dimore = palaces;
+            _isLoading = false;
+          });
+        }
+      },
+    );
 
     super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // TODO: POSSIBLE TO CALL HERE THE API WHEN FILTERS CHANGE
+    // bool isMounted  bool areFiltersChanged
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _pageController.removeListener(controlPages);
   }
 
   void goToIntroDimora(Dimora dimora) {
@@ -70,8 +96,16 @@ class _DimorePageState extends State<DimorePage> {
     if (_isLoading) {
       return const Center(child: CircularProgressIndicator());
     } else if (_dimore.isEmpty) {
-      return const Center(
-        child: Text("An error occurred"),
+      return NoDimora(
+        text: TextUtils.getText(
+          "<it>Nessuna dimora con questi filtri</it><en>No place found with this filters</en>",
+          context,
+        ),
+        buttonTitle: TextUtils.getText(
+          "<it>Nessuna dimora con questi filtri</it><en>No place found with this filters</en>",
+          context,
+        ),
+        onPressed: () => Navigator.of(context).pushReplacementNamed("/filters"),
       );
     } else {
       return Stack(
@@ -123,6 +157,11 @@ class _DimorePageState extends State<DimorePage> {
           Navigator.of(context).pushNamed(
             "/servizi",
             arguments: {"title": "Hotel", "dimore": _zona?.hotels},
+          );
+        } else if (index == 2) {
+          Navigator.of(context).pushNamed(
+            "/favorites",
+            arguments: {"id": idZona},
           );
         }
       },
