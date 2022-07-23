@@ -1,4 +1,4 @@
-package com.example.castelturismo
+package com.castelfrancoveneto.castelturismo
 
 import io.flutter.embedding.android.FlutterActivity
 
