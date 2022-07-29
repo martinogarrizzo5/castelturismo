@@ -78,11 +78,13 @@ class _CreditsPageState extends State<FavoritesPage> {
 
     List<Dimora> palazzi = [];
     List<Dimora> hotels = [];
+    List<Dimora> bar = [];
 
-    // TODO: add all types of dimore e.g Albergo, Bar
     for (var dimora in _favoriteDimore!) {
       if (dimora.tipologia == "Albergo") {
         hotels.add(dimora);
+      } else if (dimora.tipologia == "Bar") {
+        bar.add(dimora);
       } else {
         palazzi.add(dimora);
       }
@@ -147,6 +149,37 @@ class _CreditsPageState extends State<FavoritesPage> {
               arguments: {
                 "dimora": dimora,
                 "type": DimoraType.hotel,
+              },
+            ),
+          ),
+        ),
+        const SizedBox(height: 32),
+        if (bar.isNotEmpty)
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: const [
+              Text(
+                "Bar",
+                style: TextStyle(
+                  fontSize: 19,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 3,
+                ),
+              ),
+              Divider(
+                color: Colors.white,
+                thickness: 2,
+              )
+            ],
+          ),
+        ...bar.map(
+          (dimora) => DimoraMiniCard(
+            dimora,
+            onTap: () => Navigator.of(context).pushNamed(
+              "/servizio",
+              arguments: {
+                "dimora": dimora,
+                "type": DimoraType.bar,
               },
             ),
           ),

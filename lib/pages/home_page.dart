@@ -113,11 +113,14 @@ class _HomePageState extends State<HomePage> {
       body: Center(
         child: Stack(children: [
           Positioned.fill(
-              child: Align(
-                  child: Image.asset(
-            "assets/home.png",
-            alignment: Alignment.center,
-          ))),
+            child: Align(
+              child: Image.asset(
+                "assets/home.png",
+                alignment: Alignment.center,
+                scale: 1.2,
+              ),
+            ),
+          ),
           Column(
             children: [
               Expanded(
