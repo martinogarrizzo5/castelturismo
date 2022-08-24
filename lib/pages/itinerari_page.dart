@@ -1,9 +1,9 @@
-import 'package:castelturismo/components/base_app_bar.dart';
-import 'package:castelturismo/components/download_error_widget.dart';
-import 'package:castelturismo/utils/download.dart';
-import 'package:castelturismo/models/itinerario.dart';
-import 'package:castelturismo/utils/text.dart';
 import "package:flutter/material.dart";
+import '../components/base_app_bar.dart';
+import '../components/download_error_widget.dart';
+import '../utils/download.dart';
+import '../models/itinerario.dart';
+import '../utils/text.dart';
 
 class ItinerariPage extends StatefulWidget {
   const ItinerariPage({Key? key}) : super(key: key);

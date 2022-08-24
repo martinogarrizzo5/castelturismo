@@ -19,7 +19,7 @@ class DownloadErrorWidget extends StatelessWidget {
             ),
             Text(
               TextUtils.getText(
-                "<it>Si è verificato un errore. Torna indietro e prova di nuovo più tardi.</it><en>An error occurred. Go back and try again later.</en>",
+                "<it>Si è verificato un errore. Torna indietro e prova di nuovo più tardi.</it><en>An error occurred. Go back and try again later.</en><es>Se ha producido un error. Vuelve e inténtalo de nuevo más tarde.</es>",
                 context,
               ),
               textAlign: TextAlign.center,
@@ -28,7 +28,7 @@ class DownloadErrorWidget extends StatelessWidget {
             SizedBox(height: 12),
             Button(
               text: TextUtils.getText(
-                "<it>Torna alla home</it><en>Go back to home</en>",
+                "<it>Torna alla home</it><en>Go back to home</en><es>Volver a casa</es>",
                 context,
               ),
               onPress: () => Navigator.of(context).pushReplacementNamed("/"),

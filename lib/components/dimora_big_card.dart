@@ -14,7 +14,7 @@ class ZonaCard extends StatelessWidget {
   }) : super(key: key);
 
   final String discoverButtonText =
-      "<it>Scopri di più</it><en>Discover more</en>";
+      "<it>Scopri di più</it><en>Discover more</en><es>Más información</es>";
 
   @override
   Widget build(BuildContext context) {

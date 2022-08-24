@@ -1,10 +1,10 @@
-import 'package:castelturismo/components/base_app_bar.dart';
-import 'package:castelturismo/components/dimora_mini_card.dart';
-import 'package:castelturismo/models/dimora.dart';
-import 'package:castelturismo/providers/favorites.dart';
-import 'package:castelturismo/utils/text.dart';
 import "package:flutter/material.dart";
 import 'package:provider/provider.dart';
+import '../components/base_app_bar.dart';
+import '../components/dimora_mini_card.dart';
+import '../models/dimora.dart';
+import '../providers/favorites.dart';
+import '../utils/text.dart';
 
 class FavoritesPage extends StatefulWidget {
   const FavoritesPage({Key? key}) : super(key: key);
@@ -196,7 +196,7 @@ class _CreditsPageState extends State<FavoritesPage> {
           Image.asset("assets/iconapreferitifilled.png"),
           Text(
             TextUtils.getText(
-              "<it>Nessun preferito aggiunto</it><en>No favorite place added</en>",
+              "<it>Nessun preferito aggiunto</it><en>No favorite place added</en><es>No se han añadido favoritos</es>",
               context,
             ),
             style: const TextStyle(fontSize: 20),
@@ -212,8 +212,8 @@ class _CreditsPageState extends State<FavoritesPage> {
       backgroundColor: Colors.black,
       appBar: baseAppBar(
         context,
-        title:
-            TextUtils.getText("<it>PREFERITI</it><en>FAVORITES</en>", context),
+        title: TextUtils.getText(
+            "<it>PREFERITI</it><en>FAVORITES</en><es>AHORRA</es>", context),
       ),
       body: _buildBody(),
     );

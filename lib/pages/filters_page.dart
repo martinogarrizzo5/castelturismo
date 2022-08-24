@@ -1,9 +1,9 @@
-import 'package:castelturismo/components/base_app_bar.dart';
-import 'package:castelturismo/components/filter.dart';
-import 'package:castelturismo/providers/filters.dart';
-import 'package:castelturismo/utils/text.dart';
 import "package:flutter/material.dart";
 import 'package:provider/provider.dart';
+import '../components/base_app_bar.dart';
+import '../components/filter.dart';
+import '../providers/filters.dart';
+import '../utils/text.dart';
 
 class FiltersPage extends StatefulWidget {
   const FiltersPage({Key? key}) : super(key: key);
@@ -43,7 +43,8 @@ class _FiltersPageState extends State<FiltersPage> {
       backgroundColor: Colors.black,
       appBar: baseAppBar(
         context,
-        title: TextUtils.getText("<it>FILTRI</it><en>FILTERS</en>", context),
+        title: TextUtils.getText(
+            "<it>FILTRI</it><en>FILTERS</en><es>FILTROS</es>", context),
       ),
       body: _buildBody(),
     );

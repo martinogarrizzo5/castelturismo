@@ -1,11 +1,11 @@
-import 'package:castelturismo/components/base_app_bar.dart';
-import 'package:castelturismo/components/dimora_mini_card.dart';
-import 'package:castelturismo/components/download_error_widget.dart';
-import 'package:castelturismo/models/itinerario.dart';
-import 'package:castelturismo/models/percorso.dart';
-import 'package:castelturismo/utils/download.dart';
-import 'package:castelturismo/utils/text.dart';
 import 'package:flutter/material.dart';
+import '../components/base_app_bar.dart';
+import '../components/dimora_mini_card.dart';
+import '../components/download_error_widget.dart';
+import '../models/itinerario.dart';
+import '../models/percorso.dart';
+import '../utils/download.dart';
+import '../utils/text.dart';
 
 class ItinerarioDetailsPage extends StatelessWidget {
   const ItinerarioDetailsPage({Key? key}) : super(key: key);

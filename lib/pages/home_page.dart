@@ -1,7 +1,7 @@
-import 'package:castelturismo/providers/favorites.dart';
-import 'package:castelturismo/providers/filters.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../providers/favorites.dart';
+import '../providers/filters.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);

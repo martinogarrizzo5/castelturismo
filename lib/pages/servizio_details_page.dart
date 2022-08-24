@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:castelturismo/models/dimora.dart';
 import 'package:flutter/material.dart';
+import '../models/dimora.dart';
 
 class ServizioPage extends StatelessWidget {
   const ServizioPage({Key? key}) : super(key: key);

@@ -1,5 +1,3 @@
-import 'package:castelturismo/pages/itinerario_details_page.dart';
-import 'package:castelturismo/pages/servizio_details_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -15,6 +13,8 @@ import "./pages/intro_dimora_page.dart";
 import './pages/home_page.dart';
 import './pages/dimora_details_page.dart';
 import './pages/servizi_page.dart';
+import './pages/itinerario_details_page.dart';
+import './pages/servizio_details_page.dart';
 import './utils/colors.dart';
 
 void main() {
@@ -41,8 +41,10 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         localizationsDelegates: GlobalMaterialLocalizations.delegates,
         supportedLocales: const [
-          Locale('en', 'US'),
           Locale('it'),
+          Locale('en'),
+          Locale('es'),
+          // Locale('fr'),
         ],
         theme: ThemeData(
           primarySwatch: whiteSwatch,

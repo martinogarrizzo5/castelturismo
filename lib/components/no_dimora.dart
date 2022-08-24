@@ -5,13 +5,11 @@ import "package:flutter/material.dart";
 class NoDimora extends StatelessWidget {
   final String text;
   final void Function()? onPressed;
-  final String? buttonTitle;
 
   const NoDimora({
     Key? key,
     required this.text,
     this.onPressed,
-    this.buttonTitle,
   }) : super(key: key);
 
   @override
@@ -31,10 +29,10 @@ class NoDimora extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 12),
-          if (buttonTitle != null && onPressed != null)
+          if (onPressed != null)
             Button(
               text: TextUtils.getText(
-                "<it>Cambia filtri</it><en>Change filters</en>",
+                "<it>Cambia filtri</it><en>Change filters</en><es>Cambiar filtros</es>",
                 context,
               ),
               onPress: () =>

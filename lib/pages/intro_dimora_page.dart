@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:castelturismo/providers/favorites.dart';
-import 'package:castelturismo/utils/styles.dart';
 import "package:flutter/material.dart";
 import 'package:provider/provider.dart';
+import '../providers/favorites.dart';
+import '../utils/styles.dart';
 import '../models/dimora.dart';
 
 class IntroDimoraPage extends StatefulWidget {

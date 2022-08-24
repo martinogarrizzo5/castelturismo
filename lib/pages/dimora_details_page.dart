@@ -1,9 +1,9 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:castelturismo/components/base_app_bar.dart';
-import 'package:castelturismo/models/dimora.dart';
-import 'package:castelturismo/utils/styles.dart';
-import 'package:castelturismo/utils/text.dart';
 import "package:flutter/material.dart";
+import 'package:cached_network_image/cached_network_image.dart';
+import '../components/base_app_bar.dart';
+import '../models/dimora.dart';
+import '../utils/styles.dart';
+import '../utils/text.dart';
 
 class DimoraDetailsPage extends StatelessWidget {
   const DimoraDetailsPage({Key? key}) : super(key: key);
@@ -51,7 +51,8 @@ class DimoraDetailsPage extends StatelessWidget {
               const SizedBox(height: 16),
               Row(children: [
                 Text(
-                  TextUtils.getText("<it>Zona: </it><en>Zone: </en>", context),
+                  TextUtils.getText(
+                      "<it>Zona: </it><en>Zone: </en><es>Zona: </es>", context),
                   style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
                 Text(dimora.zona!),
@@ -59,7 +60,8 @@ class DimoraDetailsPage extends StatelessWidget {
               Row(children: [
                 Text(
                   TextUtils.getText(
-                      "<it>Tipologia: </it><en>Type: </en>", context),
+                      "<it>Tipologia: </it><en>Type: </en><es>Tipología: </es>",
+                      context),
                   style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
                 Text(dimora.tipologia),

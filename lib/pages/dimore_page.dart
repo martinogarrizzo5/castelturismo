@@ -1,11 +1,12 @@
+import 'package:castelturismo/providers/favorites.dart';
+import 'package:dots_indicator/dots_indicator.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../components/no_dimora.dart';
 import '../providers/filters.dart';
 import '../utils/download.dart';
 import '../utils/styles.dart';
 import '../utils/text.dart';
-import 'package:dots_indicator/dots_indicator.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import "../components/dimora_big_card.dart";
 import '../models/dimora.dart';
 import '../models/zona.dart';
@@ -93,16 +94,15 @@ class _DimorePageState extends State<DimorePage> {
   }
 
   Widget _pageBody() {
-    if (_isLoading) {
+    // prevent access to page if filters and favorites request hasn't completed yet
+    final filters = Provider.of<Filters>(context).filters;
+    final favorites = Provider.of<Favorites>(context).places;
+    if (_isLoading || filters == null || favorites == null) {
       return const Center(child: CircularProgressIndicator());
     } else if (_dimore.isEmpty) {
       return NoDimora(
         text: TextUtils.getText(
-          "<it>Nessuna dimora con questi filtri</it><en>No place found with this filters</en>",
-          context,
-        ),
-        buttonTitle: TextUtils.getText(
-          "<it>Nessuna dimora con questi filtri</it><en>No place found with this filters</en>",
+          "<it>Nessuna dimora con questi filtri</it><en>No place found with this filters</en><es>No hay vivienda con estos filtros</es>",
           context,
         ),
         onPressed: () => Navigator.of(context).pushReplacementNamed("/filters"),
