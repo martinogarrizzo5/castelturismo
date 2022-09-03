@@ -35,7 +35,7 @@ class ServiziPage extends StatelessWidget {
     Widget _buildNoDimora() {
       return NoDimora(
         text: TextUtils.getText(
-          "<it>Nessun $title trovato</it><en>No $title found</en><es>No se han encontrado $title</es>",
+          "<it>Nessun $title trovato</it><en>No $title found</en><es>No se han encontrado $title</es><de>Keine $title gefunden</de>",
           context,
         ),
       );

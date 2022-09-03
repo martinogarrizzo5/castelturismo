@@ -49,25 +49,42 @@ class DimoraDetailsPage extends StatelessWidget {
                 style: titleStyle,
               ),
               const SizedBox(height: 16),
-              Row(children: [
-                Text(
-                  TextUtils.getText(
-                      "<it>Zona: </it><en>Zone: </en><es>Zona: </es>", context),
-                  style: const TextStyle(fontWeight: FontWeight.bold),
-                ),
-                Text(dimora.zona!),
-              ]),
-              Row(children: [
-                Text(
-                  TextUtils.getText(
-                      "<it>Tipologia: </it><en>Type: </en><es>Tipología: </es>",
-                      context),
-                  style: const TextStyle(fontWeight: FontWeight.bold),
-                ),
-                Text(dimora.tipologia),
-              ]),
+              Row(
+                children: [
+                  Text(
+                    TextUtils.getText(
+                        "<it>Zona: </it><en>Zone: </en><es>Zona: </es><de>Zone: </de>",
+                        context),
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
+                  ),
+                  Text(
+                    dimora.zona!,
+                    style: descriptionStyle,
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Text(
+                    TextUtils.getText(
+                        "<it>Tipologia: </it><en>Type: </en><es>Tipología: </es><de>Typologie: </de>",
+                        context),
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
+                  ),
+                  Text(dimora.tipologia, style: descriptionStyle),
+                ],
+              ),
               const SizedBox(height: 8),
-              Text(dimora.description(context)),
+              Text(
+                dimora.description(context),
+                style: descriptionStyle,
+              ),
               Align(
                 alignment: Alignment.center,
                 child: Wrap(

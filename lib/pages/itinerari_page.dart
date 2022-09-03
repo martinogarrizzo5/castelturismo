@@ -17,7 +17,13 @@ class _CreditsPageState extends State<ItinerariPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: baseAppBar(context, title: "ITINERARI"),
+      appBar: baseAppBar(
+        context,
+        title: TextUtils.getText(
+          "<it>ITINERARI</it><en>ROUTES</en><de>ROUTEN</de>",
+          context,
+        ),
+      ),
       body: FutureBuilder(
         future: Download.getPercorsi(),
         builder: (ctx, dataSnapshot) {
@@ -46,7 +52,9 @@ class _CreditsPageState extends State<ItinerariPage> {
                           ),
                         ),
                         child: Text(
-                            TextUtils.getText(percorso.descrizione, context)),
+                          TextUtils.getText(percorso.descrizione, context),
+                          style: TextStyle(fontSize: 15),
+                        ),
                       ),
                     )
                     .toList(),

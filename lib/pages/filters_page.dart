@@ -44,7 +44,8 @@ class _FiltersPageState extends State<FiltersPage> {
       appBar: baseAppBar(
         context,
         title: TextUtils.getText(
-            "<it>FILTRI</it><en>FILTERS</en><es>FILTROS</es>", context),
+            "<it>FILTRI</it><en>FILTERS</en><es>FILTROS</es><de>FILTER</de>",
+            context),
       ),
       body: _buildBody(),
     );

@@ -84,7 +84,10 @@ class DimoraMiniCard extends StatelessWidget {
             if (pathNumber != null) buildPathNumber(pathNumber!),
             const SizedBox(width: 8),
             Flexible(
-              child: Text(dimora.nome),
+              child: Text(
+                dimora.nome,
+                style: TextStyle(fontSize: 15),
+              ),
             ),
           ],
         ),

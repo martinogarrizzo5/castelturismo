@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
           Locale('it'),
           Locale('en'),
           Locale('es'),
-          // Locale('fr'),
+          Locale('de'),
         ],
         theme: ThemeData(
           primarySwatch: whiteSwatch,

@@ -1,3 +1,4 @@
+import 'package:castelturismo/utils/styles.dart';
 import "package:flutter/material.dart";
 import '../components/base_app_bar.dart';
 import '../components/download_error_widget.dart';
@@ -32,7 +33,10 @@ class _CreditsPageState extends State<CreditsPage> {
               padding: const EdgeInsets.all(16),
               children: credits
                   .map(
-                    (e) => Text(e.descrizione),
+                    (e) => Text(
+                      e.descrizione,
+                      style: descriptionStyle,
+                    ),
                   )
                   .toList(),
             );

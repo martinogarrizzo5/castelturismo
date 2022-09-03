@@ -102,7 +102,7 @@ class _DimorePageState extends State<DimorePage> {
     } else if (_dimore.isEmpty) {
       return NoDimora(
         text: TextUtils.getText(
-          "<it>Nessuna dimora con questi filtri</it><en>No place found with this filters</en><es>No hay vivienda con estos filtros</es>",
+          "<it>Nessuna dimora con questi filtri</it><en>No place found with this filters</en><es>No hay vivienda con estos filtros</es><de>Keine Wohnung mit diesen Filtern</de>",
           context,
         ),
         onPressed: () => Navigator.of(context).pushReplacementNamed("/filters"),
@@ -151,7 +151,12 @@ class _DimorePageState extends State<DimorePage> {
         if (index == 0) {
           Navigator.of(context).pushNamed(
             "/servizi",
-            arguments: {"title": "Ristoro\\Bar"},
+            arguments: {
+              "title": TextUtils.getText(
+                "<it>Ristoro\\Bar</it><en>Restaurants\\Bar</en><de>Restaurants\\Stab</de>",
+                context,
+              )
+            },
           );
         } else if (index == 1) {
           Navigator.of(context).pushNamed(

@@ -5,3 +5,7 @@ const titleStyle = TextStyle(
   fontWeight: FontWeight.w500,
   letterSpacing: 2,
 );
+
+const descriptionStyle = TextStyle(
+  fontSize: 16,
+);

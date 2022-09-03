@@ -32,7 +32,7 @@ class NoDimora extends StatelessWidget {
           if (onPressed != null)
             Button(
               text: TextUtils.getText(
-                "<it>Cambia filtri</it><en>Change filters</en><es>Cambiar filtros</es>",
+                "<it>Cambia filtri</it><en>Change filters</en><es>Cambiar filtros</es><de>Filter ändern</de>",
                 context,
               ),
               onPress: () =>

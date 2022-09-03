@@ -100,9 +100,12 @@ class _CreditsPageState extends State<FavoritesPage> {
         if (palazzi.isNotEmpty)
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
+            children: [
               Text(
-                "Palazzi",
+                TextUtils.getText(
+                  "<it>Palazzi</it><en>Palaces</en><de>Paläste</de>",
+                  context,
+                ),
                 style: TextStyle(
                   fontSize: 19,
                   fontWeight: FontWeight.bold,
@@ -157,9 +160,12 @@ class _CreditsPageState extends State<FavoritesPage> {
         if (bar.isNotEmpty)
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
+            children: [
               Text(
-                "Bar",
+                TextUtils.getText(
+                  "<it>Bar</it><en>Bar</en><de>Stab</de>",
+                  context,
+                ),
                 style: TextStyle(
                   fontSize: 19,
                   fontWeight: FontWeight.bold,
@@ -196,7 +202,7 @@ class _CreditsPageState extends State<FavoritesPage> {
           Image.asset("assets/iconapreferitifilled.png"),
           Text(
             TextUtils.getText(
-              "<it>Nessun preferito aggiunto</it><en>No favorite place added</en><es>No se han añadido favoritos</es>",
+              "<it>Nessun preferito aggiunto</it><en>No favorite place added</en><es>No se han añadido favoritos</es><de>Keine Favoriten hinzugefügt</de>",
               context,
             ),
             style: const TextStyle(fontSize: 20),
@@ -213,7 +219,8 @@ class _CreditsPageState extends State<FavoritesPage> {
       appBar: baseAppBar(
         context,
         title: TextUtils.getText(
-            "<it>PREFERITI</it><en>FAVORITES</en><es>AHORRA</es>", context),
+            "<it>PREFERITI</it><en>FAVORITES</en><es>AHORRA</es><de>SPEICHERT</de>",
+            context),
       ),
       body: _buildBody(),
     );

@@ -137,7 +137,10 @@ class _IntroDimoraPageState extends State<IntroDimoraPage> {
                           style: titleStyle,
                         ),
                         const SizedBox(height: 16),
-                        Text(dimora.introDescription(context)),
+                        Text(
+                          dimora.introDescription(context),
+                          style: TextStyle(fontSize: 16),
+                        ),
                         const SizedBox(height: 16),
                         Align(
                           alignment: Alignment.center,
