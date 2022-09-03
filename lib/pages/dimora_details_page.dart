@@ -84,6 +84,7 @@ class DimoraDetailsPage extends StatelessWidget {
               Text(
                 dimora.description(context),
                 style: descriptionStyle,
+                textAlign: TextAlign.justify,
               ),
               Align(
                 alignment: Alignment.center,
