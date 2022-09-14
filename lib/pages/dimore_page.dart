@@ -155,7 +155,8 @@ class _DimorePageState extends State<DimorePage> {
               "title": TextUtils.getText(
                 "<it>Ristoro\\Bar</it><en>Restaurants\\Bar</en><de>Restaurants\\Stab</de>",
                 context,
-              )
+              ),
+              "dimore": _zona?.bar,
             },
           );
         } else if (index == 1) {
