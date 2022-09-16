@@ -13,7 +13,6 @@ class DimoraDetailsPage extends StatelessWidget {
     final routeArgs =
         ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
     Dimora dimora = routeArgs["dimora"];
-    DimoraType? dimoraType = routeArgs["type"];
 
     return Scaffold(
       appBar: baseAppBar(context, title: ""),

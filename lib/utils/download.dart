@@ -3,22 +3,11 @@ import 'package:castelturismo/models/dimora.dart';
 import 'package:castelturismo/models/filtro.dart';
 import 'package:castelturismo/models/itinerario.dart';
 import 'package:castelturismo/models/percorso.dart';
-import 'package:castelturismo/providers/filters.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
-import 'package:provider/provider.dart';
 import 'dart:convert';
 import '../models/zona.dart';
 
 class Download {
-  // TODO: USE THIS FUNCTION TO RETRY CONNECTION TO SERVER IN CASE OF FAIL
-  static Future<dynamic> retryFuture(
-      Future<dynamic> Function() future, int delay) async {
-    return Future.delayed(Duration(milliseconds: delay), () async {
-      return await future();
-    });
-  }
-
   static Future<Zona> getDimore({required int idZona}) async {
     Zona data;
 

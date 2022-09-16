@@ -1,4 +1,3 @@
-import 'package:castelturismo/utils/text.dart';
 import "package:flutter/material.dart";
 
 class Button extends StatelessWidget {

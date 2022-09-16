@@ -10,6 +10,7 @@ class Favorites with ChangeNotifier {
     if (_places != null) {
       return [..._places!];
     }
+    return null;
   }
 
   void togglePlace(Dimora place) {
