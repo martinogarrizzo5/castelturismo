@@ -40,6 +40,7 @@ class ServizioPage extends StatelessWidget {
       body: ListView(
         children: [
           CachedNetworkImage(
+            key: ValueKey(dimora.mainGeneralPhoto),
             imageUrl: dimora.mainGeneralPhoto,
             imageBuilder: (ctx, imageProvider) => Container(
               margin: const EdgeInsets.all(8.0),
@@ -66,8 +67,10 @@ class ServizioPage extends StatelessWidget {
             dimora.via,
             textAlign: TextAlign.center,
           ),
+          // TODO: PUT HERE THE MAP
           if (dimora.generalPhotosPaths.isNotEmpty)
             CachedNetworkImage(
+              key: ValueKey(dimora.generalPhotosPaths[0]),
               imageUrl: dimora.generalPhotosPaths[0],
               imageBuilder: (ctx, imageProvider) => Container(
                 margin: const EdgeInsets.all(8.0),

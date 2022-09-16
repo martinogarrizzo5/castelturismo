@@ -16,7 +16,6 @@ class _CreditsPageState extends State<CreditsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
       appBar: baseAppBar(context, title: "CREDITS"),
       body: FutureBuilder(
         future: Download.getCredits(),

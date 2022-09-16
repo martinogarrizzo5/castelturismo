@@ -34,30 +34,28 @@ class _CreditsPageState extends State<ItinerariPage> {
               return const DownloadErrorWidget();
             } else {
               List<Itinerario> percorsi = dataSnapshot.data as List<Itinerario>;
-              return ListView(
+              return ListView.separated(
                 padding: const EdgeInsets.all(24.0),
-                children: percorsi
-                    .map(
-                      (percorso) => ElevatedButton(
-                        onPressed: () => Navigator.of(context).pushNamed(
-                          "/itinerario",
-                          arguments: percorso,
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          primary: const Color(0xFF353538),
-                          onPrimary: Colors.white,
-                          padding: const EdgeInsets.symmetric(vertical: 32),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(100),
-                          ),
-                        ),
-                        child: Text(
-                          TextUtils.getText(percorso.descrizione, context),
-                          style: TextStyle(fontSize: 15),
-                        ),
-                      ),
-                    )
-                    .toList(),
+                itemCount: percorsi.length,
+                itemBuilder: (ctx, i) => ElevatedButton(
+                  onPressed: () => Navigator.of(context).pushNamed(
+                    "/itinerario",
+                    arguments: percorsi[i],
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    primary: const Color(0xFF353538),
+                    onPrimary: Colors.white,
+                    padding: const EdgeInsets.symmetric(vertical: 32),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(100),
+                    ),
+                  ),
+                  child: Text(
+                    TextUtils.getText(percorsi[i].descrizione, context),
+                    style: TextStyle(fontSize: 15),
+                  ),
+                ),
+                separatorBuilder: (ctx, i) => const SizedBox(height: 28),
               );
             }
           }

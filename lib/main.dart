@@ -47,8 +47,15 @@ class MyApp extends StatelessWidget {
           Locale('de'),
         ],
         theme: ThemeData(
+          scaffoldBackgroundColor: Color(0xFF040506),
           primarySwatch: whiteSwatch,
-          appBarTheme: const AppBarTheme(foregroundColor: Colors.white),
+          appBarTheme: const AppBarTheme(
+            foregroundColor: Colors.white,
+            backgroundColor: Color(0xFF040506),
+          ),
+          bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+            backgroundColor: Color(0xFF040506),
+          ),
           textTheme: Theme.of(context).textTheme.apply(
                 bodyColor: Colors.white,
                 displayColor: Colors.white,

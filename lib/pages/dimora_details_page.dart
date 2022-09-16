@@ -16,7 +16,6 @@ class DimoraDetailsPage extends StatelessWidget {
     DimoraType? dimoraType = routeArgs["type"];
 
     return Scaffold(
-      backgroundColor: Colors.black,
       appBar: baseAppBar(context, title: ""),
       body: SingleChildScrollView(
         child: Padding(
@@ -27,6 +26,7 @@ class DimoraDetailsPage extends StatelessWidget {
               Align(
                 alignment: Alignment.center,
                 child: CachedNetworkImage(
+                  key: ValueKey(dimora.mainGeneralPhoto),
                   imageUrl: dimora.mainGeneralPhoto,
                   imageBuilder: (ctx, imageProvider) => Container(
                     margin: const EdgeInsets.all(8.0),
@@ -38,8 +38,10 @@ class DimoraDetailsPage extends StatelessWidget {
                     ),
                   ),
                   placeholder: (ctx, url) => Container(
+                    height: 220,
+                    width: double.infinity,
                     margin: const EdgeInsets.all(8.0),
-                    child: const CircularProgressIndicator(),
+                    child: Center(child: const CircularProgressIndicator()),
                   ),
                 ),
               ),
@@ -92,20 +94,25 @@ class DimoraDetailsPage extends StatelessWidget {
                   children: dimora.generalPhotosPaths
                       .map(
                         ((path) => CachedNetworkImage(
+                              key: ValueKey(path),
                               imageUrl: path,
                               imageBuilder: (ctx, imageProvider) => Container(
                                 margin: const EdgeInsets.all(8.0),
                                 child: Image(image: imageProvider),
                               ),
                               placeholder: (ctx, url) => Container(
+                                height: 100,
+                                width: 100,
                                 margin: const EdgeInsets.all(8.0),
-                                child: const CircularProgressIndicator(),
+                                child: Center(
+                                  child: const CircularProgressIndicator(),
+                                ),
                               ),
                             )),
                       )
                       .toList(),
                 ),
-              )
+              ),
             ],
           ),
         ),

@@ -20,6 +20,7 @@ class _FiltersPageState extends State<FiltersPage> {
       return const Center(child: CircularProgressIndicator());
     } else {
       return ListView(
+        padding: const EdgeInsets.all(8.0),
         children: filters
             .map(
               (filter) => ChangeNotifierProvider.value(
@@ -40,7 +41,6 @@ class _FiltersPageState extends State<FiltersPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
       appBar: baseAppBar(
         context,
         title: TextUtils.getText(

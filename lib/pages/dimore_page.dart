@@ -144,7 +144,6 @@ class _DimorePageState extends State<DimorePage> {
 
   BottomNavigationBar _buildNavBar() {
     return BottomNavigationBar(
-      backgroundColor: Colors.black,
       showSelectedLabels: false,
       showUnselectedLabels: false,
       onTap: (index) {

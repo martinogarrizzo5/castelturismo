@@ -25,6 +25,7 @@ class ZonaCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CachedNetworkImage(
+                key: ValueKey(imageUrl),
                 imageUrl: imageUrl,
                 imageBuilder: (ctx, imageProvider) => Container(
                   width: MediaQuery.of(context).size.width * 0.8,
@@ -54,15 +55,25 @@ class ZonaCard extends StatelessWidget {
                     onPrimary: Colors.white,
                     padding: const EdgeInsets.symmetric(
                       vertical: 12,
-                      horizontal: 32,
+                      horizontal: 25,
                     ),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(18),
                     ),
                   ),
-                  child: Text(
-                    TextUtils.getText(discoverButtonText, context),
-                    style: const TextStyle(fontSize: 18),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Image.asset(
+                        "assets/book-open.png",
+                        height: 21,
+                      ),
+                      SizedBox(width: 8),
+                      Text(
+                        TextUtils.getText(discoverButtonText, context),
+                        style: const TextStyle(fontSize: 18),
+                      ),
+                    ],
                   ),
                 ),
               ),

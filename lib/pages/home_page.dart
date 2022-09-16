@@ -24,7 +24,6 @@ class _HomePageState extends State<HomePage> {
   AppBar _buildAppBar() {
     return AppBar(
       centerTitle: true,
-      backgroundColor: Colors.black,
       title: Column(
         children: const [
           Text(
@@ -109,7 +108,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
       body: Center(
         child: Stack(children: [
           Positioned.fill(

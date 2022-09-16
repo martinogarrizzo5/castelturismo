@@ -215,7 +215,6 @@ class _CreditsPageState extends State<FavoritesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
       appBar: baseAppBar(
         context,
         title: TextUtils.getText(

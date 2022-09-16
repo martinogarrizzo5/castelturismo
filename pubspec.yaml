@@ -95,6 +95,7 @@ flutter:
     - assets/empty-dimore.png
     - assets/sample-dimora.jpg
     - assets/error.png
+    - assets/book-open.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
