@@ -49,8 +49,11 @@ class ServizioPage extends StatelessWidget {
                 height: 200,
               ),
             ),
-            placeholder: (ctx, url) => Center(
-              child: const CircularProgressIndicator(),
+            placeholder: (ctx, url) => Container(
+              height: 200,
+              child: Center(
+                child: const CircularProgressIndicator(),
+              ),
             ),
           ),
           Text(

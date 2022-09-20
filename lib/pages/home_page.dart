@@ -126,11 +126,11 @@ class _HomePageState extends State<HomePage> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     _buildHomeSection(
-                      1,
+                      3,
                       imagePath: "assets/iconapiazzagiorgione.png",
                     ),
                     _buildHomeSection(
-                      2,
+                      4,
                       imagePath: "assets/iconaborgotreviso.png",
                     ),
                   ],
@@ -141,11 +141,11 @@ class _HomePageState extends State<HomePage> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     _buildHomeSection(
-                      3,
+                      2,
                       imagePath: "assets/iconatramura.png",
                     ),
                     _buildHomeSection(
-                      4,
+                      1,
                       imagePath: "assets/iconacorso29.png",
                     ),
                   ],

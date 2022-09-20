@@ -58,6 +58,7 @@ class DimoraMiniCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
+        key: ValueKey(dimora.id),
         height: 80,
         padding: const EdgeInsets.symmetric(horizontal: 16),
         margin: const EdgeInsets.symmetric(vertical: 16),
