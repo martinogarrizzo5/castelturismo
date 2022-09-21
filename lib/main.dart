@@ -47,14 +47,14 @@ class MyApp extends StatelessWidget {
           Locale('de'),
         ],
         theme: ThemeData(
-          scaffoldBackgroundColor: Color(0xFF040506),
+          scaffoldBackgroundColor: Colors.black,
           primarySwatch: whiteSwatch,
           appBarTheme: const AppBarTheme(
             foregroundColor: Colors.white,
-            backgroundColor: Color(0xFF040506),
+            backgroundColor: Colors.black,
           ),
           bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-            backgroundColor: Color(0xFF040506),
+            backgroundColor: Colors.black,
           ),
           textTheme: Theme.of(context).textTheme.apply(
                 bodyColor: Colors.white,
