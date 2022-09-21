@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../components/base_app_bar.dart';
 import '../components/dimora_mini_card.dart';
@@ -36,11 +37,18 @@ class ItinerarioDetailsPage extends StatelessWidget {
             return ListView(
               padding: const EdgeInsets.all(16.0),
               children: [
-                Image.asset(
-                  "assets/sample-dimora.jpg",
+                CachedNetworkImage(
+                  key: ValueKey(itinerario.imagePath),
+                  imageUrl: itinerario.imagePath,
                   height: 220,
                   width: double.infinity,
                   fit: BoxFit.cover,
+                  placeholder: (ctx, url) => Container(
+                    height: 220,
+                    child: const Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  ),
                 ),
                 for (int i = 0; i < percorso.dimore.length; i++)
                   DimoraMiniCard(

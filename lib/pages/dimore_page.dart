@@ -174,14 +174,23 @@ class _DimorePageState extends State<DimorePage> {
         BottomNavigationBarItem(
           icon: Image.asset("assets/iconabar.png", width: 40, height: 40),
           label: "",
+          tooltip: TextUtils.getText(
+            "<it>Bar</it><en>Bar</en><de>Stab</de>",
+            context,
+          ),
         ),
         BottomNavigationBarItem(
           icon: Image.asset("assets/iconahotel.png", width: 42, height: 42),
           label: "",
+          tooltip: "Hotels",
         ),
         BottomNavigationBarItem(
           icon: Image.asset("assets/iconapreferiti.png", width: 48, height: 48),
           label: "",
+          tooltip: TextUtils.getText(
+            "<it>Preferiti</it><en>Favorites</en><es>Ahorra</es><de>Speichert</de>",
+            context,
+          ),
         ),
       ],
     );

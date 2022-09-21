@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:castelturismo/utils/text.dart';
 import "package:flutter/material.dart";
 import 'package:provider/provider.dart';
 import '../providers/favorites.dart';
@@ -84,7 +85,7 @@ class _IntroDimoraPageState extends State<IntroDimoraPage> {
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     colorFilter: ColorFilter.mode(
-                      Colors.black.withOpacity(0.5),
+                      Colors.black.withOpacity(0.35),
                       BlendMode.srcOver,
                     ),
                     image: NetworkImage(dimora.backgroundPath),
@@ -106,7 +107,10 @@ class _IntroDimoraPageState extends State<IntroDimoraPage> {
                       Material(
                         color: Colors.transparent,
                         child: IconButton(
-                          tooltip: "Back",
+                          tooltip: TextUtils.getText(
+                            "<it>Indietro</it><en>Back</en><es>Atrás</es><de>Zurück</de>",
+                            context,
+                          ),
                           splashRadius: 24,
                           iconSize: 36,
                           icon: Image.asset("assets/iconafrecciaback.png"),
@@ -116,7 +120,10 @@ class _IntroDimoraPageState extends State<IntroDimoraPage> {
                       Material(
                         color: Colors.transparent,
                         child: IconButton(
-                          tooltip: "Favorite",
+                          tooltip: TextUtils.getText(
+                            "<it>Preferiti</it><en>Favorites</en><es>Ahorra</es><de>Speichert</de>",
+                            context,
+                          ),
                           splashRadius: 24,
                           iconSize: 56,
                           icon: isDimoraFavorite
