@@ -54,8 +54,9 @@ class DimoraDetailsPage extends StatelessWidget {
                 children: [
                   Text(
                     TextUtils.getText(
-                        "<it>Zona: </it><en>Zone: </en><es>Zona: </es><de>Zone: </de>",
-                        context),
+                      "<it>Zona: </it><en>Zone: </en><es>Zona: </es><de>Zone: </de>",
+                      context,
+                    ),
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16,

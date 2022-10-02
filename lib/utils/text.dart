@@ -27,4 +27,14 @@ class TextUtils {
 
     return translatedDescription;
   }
+
+  static String textWithParagraphs(String text) {
+    String newText = "";
+
+    text.split(". ").forEach((element) {
+      newText += element + ".\n\n";
+    });
+
+    return newText;
+  }
 }

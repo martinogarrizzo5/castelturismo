@@ -105,6 +105,8 @@ class Dimora {
   String description(BuildContext context) {
     String description = TextUtils.getText(descrizione!, context);
 
+    description = TextUtils.textWithParagraphs(description);
+
     return description;
   }
 }
