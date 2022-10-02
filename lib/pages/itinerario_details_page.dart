@@ -33,21 +33,22 @@ class ItinerarioDetailsPage extends StatelessWidget {
             }
 
             Percorso percorso = snapshot.data as Percorso;
-
             return ListView(
               padding: const EdgeInsets.all(16.0),
               children: [
                 CachedNetworkImage(
                   key: ValueKey(itinerario.imagePath),
                   imageUrl: itinerario.imagePath,
-                  height: 220,
                   width: double.infinity,
-                  fit: BoxFit.cover,
-                  placeholder: (ctx, url) => Container(
-                    height: 220,
-                    child: const Center(
-                      child: CircularProgressIndicator(),
-                    ),
+                  placeholder: (ctx, url) => LayoutBuilder(
+                    builder: (context, constraints) {
+                      return Container(
+                        height: constraints.minWidth * 1.333,
+                        child: const Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                      );
+                    },
                   ),
                 ),
                 for (int i = 0; i < percorso.dimore.length; i++)

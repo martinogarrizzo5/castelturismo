@@ -60,32 +60,7 @@ class ServizioPage extends StatelessWidget {
             dimora.description(context),
             textAlign: TextAlign.center,
           ),
-          SizedBox(height: 18),
-          Text(
-            "tel:  ${dimora.numero}",
-            textAlign: TextAlign.center,
-          ),
-          SizedBox(height: 6),
-          Text(
-            dimora.via,
-            textAlign: TextAlign.center,
-          ),
           // TODO: PUT HERE THE MAP
-          if (dimora.generalPhotosPaths.isNotEmpty)
-            CachedNetworkImage(
-              key: ValueKey(dimora.generalPhotosPaths[0]),
-              imageUrl: dimora.generalPhotosPaths[0],
-              imageBuilder: (ctx, imageProvider) => Container(
-                margin: const EdgeInsets.all(8.0),
-                child: Image(
-                  image: imageProvider,
-                  height: 200,
-                ),
-              ),
-              placeholder: (ctx, url) => Center(
-                child: const CircularProgressIndicator(),
-              ),
-            ),
         ],
       ),
     );
