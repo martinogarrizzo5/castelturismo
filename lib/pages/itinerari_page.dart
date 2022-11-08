@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import '../components/base_app_bar.dart';
 import '../components/download_error_widget.dart';
 import '../utils/download.dart';
-import '../models/itinerario.dart';
+import '../models/intro_percorso.dart';
 import '../utils/text.dart';
 
 class ItinerariPage extends StatefulWidget {
@@ -33,7 +33,8 @@ class _CreditsPageState extends State<ItinerariPage> {
             if (dataSnapshot.hasError) {
               return const DownloadErrorWidget();
             } else {
-              List<Itinerario> percorsi = dataSnapshot.data as List<Itinerario>;
+              List<IntroPercorso> percorsi =
+                  dataSnapshot.data as List<IntroPercorso>;
               return ListView.separated(
                 padding: const EdgeInsets.all(24.0),
                 itemCount: percorsi.length,

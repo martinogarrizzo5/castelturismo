@@ -15,7 +15,7 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 2.0.2+8
+version: 2.0.3+9
 
 environment:
   sdk: ">=2.17.3 <3.0.0"
@@ -70,32 +70,10 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/Filtrosenzaspunta.png
-    - assets/2.0x/Filtrosenzaspunta.png
-    - assets/3.0x/Filtrosenzaspunta.png
-    - assets/home.png
-    - assets/2.0x/home.png
-    - assets/3.0x/home.png
-    - assets/iconapreferiti.png
-    - assets/iconapreferitifilled.png
-    - assets/iconacerca.png
-    - assets/iconaorologio.png
-    - assets/iconainfo.png
-    - assets/iconascopri.png
-    - assets/iconafrecciagiu.png
-    - assets/iconafrecciaback.png
-    - assets/iconabar.png
-    - assets/iconahotel.png
-    - assets/iconapiazzagiorgione.png
-    - assets/placeholder.png
-    - assets/iconatramura.png
-    - assets/iconacorso29.png
-    - assets/iconaborgotreviso.png
-    - assets/Filtroconspunta.png
-    - assets/empty-dimore.png
-    - assets/sample-dimora.jpg
-    - assets/error.png
-    - assets/book-open.png
+    - assets/
+    - assets/loghi/
+    - assets/2.0x/
+    - assets/3.0x/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

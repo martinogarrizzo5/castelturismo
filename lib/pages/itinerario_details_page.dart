@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../components/base_app_bar.dart';
 import '../components/dimora_mini_card.dart';
 import '../components/download_error_widget.dart';
-import '../models/itinerario.dart';
+import '../models/intro_percorso.dart';
 import '../models/percorso.dart';
 import '../utils/download.dart';
 import '../utils/text.dart';
@@ -13,8 +13,8 @@ class ItinerarioDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Itinerario itinerario =
-        ModalRoute.of(context)!.settings.arguments as Itinerario;
+    IntroPercorso itinerario =
+        ModalRoute.of(context)!.settings.arguments as IntroPercorso;
 
     return Scaffold(
       backgroundColor: Colors.black,

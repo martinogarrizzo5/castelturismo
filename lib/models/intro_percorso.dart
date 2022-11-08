@@ -1,18 +1,18 @@
-class Itinerario {
+class IntroPercorso {
   final int id;
   final String descrizione;
   final int ore;
   final String imagePath;
 
-  Itinerario({
+  IntroPercorso({
     required this.id,
     required this.descrizione,
     required this.ore,
     required this.imagePath,
   });
 
-  factory Itinerario.fromJson(Map<String, dynamic> json) {
-    return Itinerario(
+  factory IntroPercorso.fromJson(Map<String, dynamic> json) {
+    return IntroPercorso(
       id: json["id"],
       descrizione: json["descrizione"],
       ore: json["ore"],

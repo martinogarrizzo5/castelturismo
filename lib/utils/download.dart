@@ -1,7 +1,7 @@
 import 'package:castelturismo/models/credits.dart';
 import 'package:castelturismo/models/dimora.dart';
 import 'package:castelturismo/models/filtro.dart';
-import 'package:castelturismo/models/itinerario.dart';
+import 'package:castelturismo/models/intro_percorso.dart';
 import 'package:castelturismo/models/percorso.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -49,16 +49,16 @@ class Download {
     return dimore;
   }
 
-  static Future<List<Itinerario>> getPercorsi() async {
-    List<Itinerario> percorsi = [];
+  static Future<List<IntroPercorso>> getPercorsi() async {
+    List<IntroPercorso> percorsi = [];
 
     final url =
         Uri.parse("http://prolococasteo.altervista.org/index.php/percorsi");
     try {
       var response = await http.get(url);
       final extractedData = jsonDecode(response.body) as List<dynamic>;
-      List<Itinerario> extractedPercorsi =
-          extractedData.map((e) => Itinerario.fromJson(e)).toList();
+      List<IntroPercorso> extractedPercorsi =
+          extractedData.map((e) => IntroPercorso.fromJson(e)).toList();
       percorsi = extractedPercorsi;
     } catch (err) {
       print(err);
