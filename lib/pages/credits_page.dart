@@ -31,13 +31,6 @@ class _CreditsPageState extends State<CreditsPage> {
             return ListView(
               padding: const EdgeInsets.all(16),
               children: [
-                ...credits.map(
-                  (e) => Text(
-                    e.descrizione,
-                    style: descriptionStyle,
-                  ),
-                ),
-                const SizedBox(height: 32),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -68,6 +61,13 @@ class _CreditsPageState extends State<CreditsPage> {
                       width: 125,
                     ),
                   ],
+                ),
+                const SizedBox(height: 24),
+                ...credits.map(
+                  (e) => Text(
+                    e.descrizione,
+                    style: descriptionStyle,
+                  ),
                 ),
               ],
             );
