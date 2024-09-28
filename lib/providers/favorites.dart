@@ -61,6 +61,7 @@ class Favorites with ChangeNotifier {
     }
 
     print("Loaded favorites");
+
     notifyListeners();
   }
 }
